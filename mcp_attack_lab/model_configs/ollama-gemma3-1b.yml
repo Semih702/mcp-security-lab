@@ -1,0 +1,15 @@
+id: ollama-gemma3-1b
+provider: ollama
+model: gemma3:1b
+
+purpose: >
+  Weak baseline to observe how small models behave under prompt and tool pressure.
+
+defaults:
+  temperature: 0.2
+  top_p: 0.9
+  max_tokens: 1024
+
+notes: >
+  Good for low-cost probing, but not strong enough to be the only benchmark model.
+

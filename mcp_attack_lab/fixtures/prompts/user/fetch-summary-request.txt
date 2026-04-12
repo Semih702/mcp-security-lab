@@ -1,0 +1,2 @@
+Fetch the target content and summarize the important points for me.
+

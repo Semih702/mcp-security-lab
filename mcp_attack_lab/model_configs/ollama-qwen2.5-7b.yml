@@ -1,0 +1,15 @@
+id: ollama-qwen2.5-7b
+provider: ollama
+model: qwen2.5:7b
+
+purpose: >
+  Stronger local baseline for comparing attack success across a more capable open model.
+
+defaults:
+  temperature: 0.1
+  top_p: 0.9
+  max_tokens: 2048
+
+notes: >
+  Useful as a comparison point after the smaller Gemma baseline.
+

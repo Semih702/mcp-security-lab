@@ -1,0 +1,21 @@
+id: filesystem-local
+server_family: official-reference
+server_path: servers/src/filesystem
+transport: stdio
+
+purpose: >
+  Local filesystem access with tightly scoped roots for controlled secret-read and persistence scenarios.
+
+roots:
+  - fixtures/data/filesystem
+
+capabilities:
+  - read_file
+  - list_directory
+  - write_file
+
+constraints:
+  network_access: false
+  writable_paths:
+    - fixtures/data/filesystem/output
+

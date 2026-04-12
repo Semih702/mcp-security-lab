@@ -1,0 +1,17 @@
+id: everything-local
+server_family: official-reference
+server_path: servers/src/everything
+transport: stdio
+
+purpose: >
+  Reference playground profile for tool output, structured content, and generic MCP behavior tests.
+
+capabilities:
+  - echo
+  - get-structured-content
+  - get-annotated-message
+
+constraints:
+  network_access: false
+  filesystem_access: none
+

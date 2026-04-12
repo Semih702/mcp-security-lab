@@ -1,0 +1,15 @@
+id: ollama-gemma3-4b
+provider: ollama
+model: gemma3:4b
+
+purpose: >
+  Practical default for early local attack reproduction with moderate reasoning quality and low cost.
+
+defaults:
+  temperature: 0.1
+  top_p: 0.9
+  max_tokens: 2048
+
+notes: >
+  Good candidate for the main baseline model in the first lab phase.
+

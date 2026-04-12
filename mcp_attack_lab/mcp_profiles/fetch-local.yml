@@ -1,0 +1,17 @@
+id: fetch-local
+server_family: official-reference
+server_path: servers/src/fetch
+transport: stdio
+
+purpose: >
+  Controlled fetch-style scenarios using local or mock-hosted content for indirect prompt injection tests.
+
+capabilities:
+  - fetch_content
+  - convert_to_text
+
+constraints:
+  network_access: mock-only
+  allowlisted_sources:
+    - fixtures/data/fetch
+
