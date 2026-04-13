@@ -1,0 +1,17 @@
+id: openai-gpt-5-nano
+provider: openai
+model: gpt-5-nano
+api_key_env: OPENAI_API_KEY
+
+purpose: >
+  Cheapest hosted GPT baseline for first real API-backed scenario execution.
+
+defaults:
+  temperature: 0.1
+  top_p: 1.0
+  max_tokens: 256
+
+notes: >
+  Good for low-cost first hosted experiments. If behavior is too weak or too noisy,
+  compare against a stronger hosted baseline afterward.
+

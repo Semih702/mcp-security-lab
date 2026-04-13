@@ -1,0 +1,17 @@
+id: dashscope-qwen-plus
+provider: dashscope
+model: qwen-plus
+base_url: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+api_key_env: DASHSCOPE_API_KEY
+
+purpose: >
+  Stronger hosted Qwen comparison model through DashScope.
+
+defaults:
+  temperature: 0.1
+  top_p: 0.9
+  max_tokens: 256
+
+notes: >
+  Useful as a stronger hosted baseline after the smaller 3B instruct model.
+

@@ -1,0 +1,17 @@
+id: huggingface-qwen2.5-0.5b-instruct
+provider: huggingface
+model: Qwen/Qwen2.5-0.5B-Instruct
+
+purpose: >
+  Small local instruct model for early controlled attack-lab experiments when
+  Ollama is unavailable.
+
+defaults:
+  temperature: 0.1
+  top_p: 0.9
+  max_tokens: 256
+
+notes: >
+  Useful for a first runnable MVP experiment, though weaker than the intended
+  Ollama-based baseline.
+

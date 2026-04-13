@@ -12,6 +12,11 @@ __pycache__/
 venv/
 env/
 
+# Local environment files
+.env
+.env.local
+env.local
+
 # Build / packaging
 build/
 dist/

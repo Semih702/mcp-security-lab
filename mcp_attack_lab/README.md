@@ -45,6 +45,13 @@ python -m mcp_attack_lab.cli run --scenario scenarios/001-indirect-prompt-inject
 python -m mcp_attack_lab.cli evaluate --scenario scenarios/001-indirect-prompt-injection.yml
 ```
 
+Hosted Qwen example through DashScope:
+
+```bash
+set DASHSCOPE_API_KEY=your_key_here
+python -m mcp_attack_lab.cli run --scenario scenarios/001-indirect-prompt-injection.yml --model-profile dashscope-qwen2.5-3b-instruct
+```
+
 Suggested design principles:
 
 - Use only dummy secrets and controlled sinks.

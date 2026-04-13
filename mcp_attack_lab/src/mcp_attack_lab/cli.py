@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 
+from .env_loader import load_dotenv_file
 from .evaluator import evaluate_scenario_definition
+from .paths import PACKAGE_ROOT
 from .runner import run_scenario
 
 
@@ -13,6 +16,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     run_parser = subparsers.add_parser("run", help="Load a scenario and print the resolved run plan")
     run_parser.add_argument("--scenario", required=True, help="Scenario file path or file name")
+    run_parser.add_argument(
+        "--model-profile",
+        help="Optional model profile override for execution",
+    )
 
     eval_parser = subparsers.add_parser(
         "evaluate",
@@ -24,11 +31,15 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
+    env_path = PACKAGE_ROOT / ".env.local"
+    for key, value in load_dotenv_file(env_path).items():
+        os.environ.setdefault(key, value)
+
     parser = build_parser()
     args = parser.parse_args()
 
     if args.command == "run":
-        result = run_scenario(args.scenario)
+        result = run_scenario(args.scenario, model_profile_override=args.model_profile)
     elif args.command == "evaluate":
         result = evaluate_scenario_definition(args.scenario)
     else:
@@ -40,4 +51,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
