@@ -30,6 +30,7 @@ Thumbs.db
 mcp_attack_lab/results/*
 !mcp_attack_lab/results/.gitkeep
 *.log
+mcp_attack_lab/fixtures/data/filesystem/output/*.txt
 
 # Node
 node_modules/
