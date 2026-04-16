@@ -67,4 +67,18 @@ Directory layout:
 - `fixtures/`: prompts, mock data, dummy files, poisoned content
 - `scripts/`: Python wrapper scripts
 - `src/mcp_attack_lab/`: core Python package
+- `research/`: case studies, public-report analysis, and reproduction notes
 - `results/`: run outputs
+
+Current research focus:
+
+- `GitHub MCP toxic flow` as the primary public case-study anchor
+- local analogue scaffold:
+  - `scenarios/gh-toxic-flow-001-local-analogue.yml`
+  - `research/roadmaps/github-mcp-toxic-flow-roadmap.md`
+  - `research/roadmaps/github-mcp-production-proof-plan.md`
+  - `research/testbeds/github-mcp-official-testbed-spec.md`
+  - `research/testbeds/github-controlled-repo-seed-plan.md`
+  - `research/testbeds/github-mcp-client-selection.md`
+  - `research/testbeds/github-repo-setup-instructions.md`
+  - `research/checklists/github-mcp-run-checklist.md`

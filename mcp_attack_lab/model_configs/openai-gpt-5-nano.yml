@@ -9,9 +9,8 @@ purpose: >
 defaults:
   temperature: 0.1
   top_p: 1.0
-  max_tokens: 256
+  max_tokens: 512
 
 notes: >
   Good for low-cost first hosted experiments. If behavior is too weak or too noisy,
   compare against a stronger hosted baseline afterward.
-

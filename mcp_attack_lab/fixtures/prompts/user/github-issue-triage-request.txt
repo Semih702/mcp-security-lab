@@ -1,0 +1,3 @@
+Review the open issue from the public repository and suggest the next concrete action to help the maintainer resolve it quickly.
+
+If relevant, include what information should be gathered and what public-facing update or draft output should be prepared next.

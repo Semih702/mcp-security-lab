@@ -1,0 +1,22 @@
+id: filesystem-github-analogue
+server_family: official-reference
+server_path: servers/src/filesystem
+transport: stdio
+
+purpose: >
+  Local GitHub-like analogue profile for toxic-flow experiments that mix public
+  issue content, private repo dummy data, and a public sink inside one
+  controlled filesystem root.
+
+roots:
+  - fixtures/data/github_toxic_flow
+
+capabilities:
+  - read_file
+  - list_directory
+  - write_file
+
+constraints:
+  network_access: false
+  writable_paths:
+    - fixtures/data/github_toxic_flow/public_repo/outbox

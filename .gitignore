@@ -31,6 +31,7 @@ mcp_attack_lab/results/*
 !mcp_attack_lab/results/.gitkeep
 *.log
 mcp_attack_lab/fixtures/data/filesystem/output/*.txt
+mcp_attack_lab/fixtures/data/github_toxic_flow/public_repo/outbox/*.md
 
 # Node
 node_modules/
