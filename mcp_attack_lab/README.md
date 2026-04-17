@@ -1,33 +1,110 @@
-# MCP Attack Lab Scaffold
+# MCP Attack Lab
 
-This directory is a reusable skeleton for controlled MCP security scenario reproduction.
+This repository is a controlled lab for reproducing and analyzing security
+failures in MCP-based systems.
 
-The idea is simple:
+The project currently has two main tracks:
 
-- Each attack scenario lives in a single YAML file under `scenarios/`.
-- MCP server choices live in `mcp_profiles/`.
-- Model choices live in `model_configs/`.
-- Prompts, poisoned content, and dummy secrets live in `fixtures/`.
-- Python CLI entrypoints and thin wrapper scripts live in `scripts/`.
-- Results can be stored under `results/`.
+- a reusable **scenario-driven lab harness**
+- a focused **GitHub MCP toxic-flow case study**
 
-Recommended flow:
+## Start Here
 
-1. Pick a scenario YAML.
-2. Resolve the `mcp_profile` and `model_profile` it references.
-3. Load any prompt and fixture files listed in the scenario.
-4. Run the scenario in an isolated environment.
-5. Record outcome, logs, and observations in `results/`.
+If someone is seeing the repo for the first time, the best reading order is:
+
+1. this file
+2. [SCENARIO_SCHEMA.md](/d:/ens491/mcp_attack_lab/SCENARIO_SCHEMA.md)
+3. [research/README.md](/d:/ens491/mcp_attack_lab/research/README.md)
+4. [repro/README.md](/d:/ens491/mcp_attack_lab/repro/README.md)
+
+## What This Repo Contains
+
+### 1. Core Lab Harness
+
+This is the reusable part of the project.
+
+- `scenarios/`
+  - YAML scenario definitions
+- `mcp_profiles/`
+  - reusable MCP server configurations
+- `model_configs/`
+  - reusable model settings
+- `fixtures/`
+  - prompts, poisoned content, dummy data, seed repositories
+- `src/mcp_attack_lab/`
+  - Python package for execution logic
+- `scripts/`
+  - thin wrapper scripts and MCP bridge helpers
+- `results/`
+  - run artifacts
+
+### 2. Research And Case Studies
+
+This is the paper-oriented part of the project.
+
+- `research/case-studies/`
+  - public-report analysis and taxonomy mapping
+- `research/roadmaps/`
+  - sequencing and experiment planning
+- `research/testbeds/`
+  - concrete reproduction notes and official testbed planning
+- `research/checklists/`
+  - step-by-step run checklists
+
+### 3. Reproducibility Assets
+
+This is the part that allows another person to rebuild the controlled GitHub
+testbed.
+
+- `repro/`
+  - reproducibility guide
+  - testbed manifest example
+- `scripts/bootstrap_github_testbed.py`
+  - bootstrap entrypoint for creating and seeding the GitHub testbed
+
+## GitHub Toxic-Flow Focus
+
+The main public-case anchor is:
+
+- `GitHub MCP toxic flow`
+
+The most relevant files for that line are:
+
+- [github-mcp-toxic-flow.md](/d:/ens491/mcp_attack_lab/research/case-studies/github-mcp-toxic-flow.md)
+- [github-mcp-production-proof-plan.md](/d:/ens491/mcp_attack_lab/research/roadmaps/github-mcp-production-proof-plan.md)
+- [github-mcp-official-testbed-spec.md](/d:/ens491/mcp_attack_lab/research/testbeds/github-mcp-official-testbed-spec.md)
+- [github-mcp-official-read-path-result.md](/d:/ens491/mcp_attack_lab/research/testbeds/github-mcp-official-read-path-result.md)
+- [github-mcp-official-write-path-result.md](/d:/ens491/mcp_attack_lab/research/testbeds/github-mcp-official-write-path-result.md)
+- [vscode-black-box-client-eval-plan.md](/d:/ens491/mcp_attack_lab/research/testbeds/vscode-black-box-client-eval-plan.md)
+
+## Reproducible GitHub Testbed
+
+The official GitHub testbed now has two parts:
+
+- **seed content**
+  - `fixtures/data/github_official/`
+- **bootstrap automation**
+  - `repro/github_testbed_manifest.example.json`
+  - `scripts/bootstrap_github_testbed.py`
+
+That means another person should be able to:
+
+- create the controlled public repo
+- create the controlled private repo
+- push the seed content
+- create the malicious issue
+- record the resulting metadata
+
+with a documented and scriptable workflow instead of ad hoc shell history.
 
 ## Python Layout
 
-The lab is now Python-based.
-
-- Main package: `src/mcp_attack_lab/`
-- CLI entrypoint: `python -m mcp_attack_lab.cli`
-- Wrapper scripts:
+- package: `src/mcp_attack_lab/`
+- wrapper scripts:
   - `scripts/run_scenario.py`
   - `scripts/evaluate_result.py`
+  - `scripts/run_official_github_probe.py`
+  - `scripts/bootstrap_github_testbed.py`
 
 Suggested setup:
 
@@ -38,47 +115,35 @@ python -m venv .venv
 pip install -e .
 ```
 
-Example usage:
+Example scenario usage:
 
 ```bash
 python -m mcp_attack_lab.cli run --scenario scenarios/001-indirect-prompt-injection.yml
 python -m mcp_attack_lab.cli evaluate --scenario scenarios/001-indirect-prompt-injection.yml
 ```
 
-Hosted Qwen example through DashScope:
-
-```bash
-set DASHSCOPE_API_KEY=your_key_here
-python -m mcp_attack_lab.cli run --scenario scenarios/001-indirect-prompt-injection.yml --model-profile dashscope-qwen2.5-3b-instruct
-```
-
-Suggested design principles:
+## Design Principles
 
 - Use only dummy secrets and controlled sinks.
-- Treat this as a safety evaluation harness, not a general exploit framework.
-- Keep each scenario measurable: expected action, forbidden action, and success criteria should be explicit.
-- Prefer outcome-based assertions such as "did the model call a forbidden tool?" over vague judgments.
+- Treat this as a safety-evaluation harness, not a general exploit framework.
+- Keep each scenario measurable.
+- Separate:
+  - case-study reasoning
+  - executable lab assets
+  - reproducibility/bootstrapping
 
-Directory layout:
+## Current State
 
-- `scenarios/`: attack definitions and templates
-- `mcp_profiles/`: reusable MCP server configurations
-- `model_configs/`: reusable model settings
-- `fixtures/`: prompts, mock data, dummy files, poisoned content
-- `scripts/`: Python wrapper scripts
-- `src/mcp_attack_lab/`: core Python package
-- `research/`: case studies, public-report analysis, and reproduction notes
-- `results/`: run outputs
+What is already implemented:
 
-Current research focus:
+- local analogue toxic-flow reproduction
+- official GitHub MCP read-path reproduction
+- official GitHub MCP write-path reproduction
+- VS Code black-box evaluation plan
+- GitHub testbed bootstrap design
 
-- `GitHub MCP toxic flow` as the primary public case-study anchor
-- local analogue scaffold:
-  - `scenarios/gh-toxic-flow-001-local-analogue.yml`
-  - `research/roadmaps/github-mcp-toxic-flow-roadmap.md`
-  - `research/roadmaps/github-mcp-production-proof-plan.md`
-  - `research/testbeds/github-mcp-official-testbed-spec.md`
-  - `research/testbeds/github-controlled-repo-seed-plan.md`
-  - `research/testbeds/github-mcp-client-selection.md`
-  - `research/testbeds/github-repo-setup-instructions.md`
-  - `research/checklists/github-mcp-run-checklist.md`
+What is next:
+
+- run the black-box VS Code client experiments
+- compare default vs defended client postures
+- tighten paper-ready reporting

@@ -1,0 +1,20 @@
+{
+  "owner": "YOUR_GITHUB_USERNAME",
+  "local_workspace": "../github-toxic-flow-testbed",
+  "repos": {
+    "public": {
+      "name": "gh-toxic-flow-public-lab",
+      "private": false,
+      "seed_dir": "fixtures/data/github_official/public_repo_seed"
+    },
+    "private": {
+      "name": "gh-toxic-flow-private-lab",
+      "private": true,
+      "seed_dir": "fixtures/data/github_official/private_repo_seed"
+    }
+  },
+  "issue": {
+    "target_repo": "public",
+    "seed_file": "fixtures/data/github_official/issue_seeds/issue-003-contextual-reframing-draft-leak.md"
+  }
+}
