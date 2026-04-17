@@ -32,16 +32,3 @@ The repository currently provides:
 - research and documentation artifacts around MCP security
 
 The next implementation phase is to connect the scenario runner to real MCP server execution, model adapters, trace capture, and pass/fail evaluation.
-
-## Suggested Repository Names
-
-Recommended:
-
-- `mcp-security-lab`
-
-Strong alternatives:
-
-- `mcp-agent-security-testbed`
-- `mcp-llm-security-lab`
-- `agentic-security-lab`
-
