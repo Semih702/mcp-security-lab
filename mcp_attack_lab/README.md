@@ -17,6 +17,15 @@ If someone is seeing the repo for the first time, the best reading order is:
 3. [research/README.md](/d:/ens491/mcp_attack_lab/research/README.md)
 4. [repro/README.md](/d:/ens491/mcp_attack_lab/repro/README.md)
 
+If the goal is more specific:
+
+- to understand the reusable harness:
+  - start with `scenarios/`, `fixtures/`, and `SCENARIO_SCHEMA.md`
+- to understand the GitHub case study:
+  - start with `research/case-studies/github-mcp-toxic-flow.md`
+- to rebuild the GitHub demo:
+  - start with `repro/README.md`
+
 ## What This Repo Contains
 
 ### 1. Core Lab Harness
@@ -61,6 +70,26 @@ testbed.
   - testbed manifest example
 - `scripts/bootstrap_github_testbed.py`
   - bootstrap entrypoint for creating and seeding the GitHub testbed
+
+There is also one workspace-level helper outside `mcp_attack_lab/`:
+
+- `/.vscode/mcp.json`
+- `/scripts/start_github_mcp_server.ps1`
+
+These exist at the repository root so VS Code can launch the official GitHub
+MCP server for the black-box client experiments.
+
+## Important Fixture Split
+
+There are two GitHub-related fixture trees on purpose:
+
+- `fixtures/data/github_toxic_flow/`
+  - local analogue assets used before the official GitHub testbed existed
+- `fixtures/data/github_official/`
+  - seed repositories and issue seeds for the controlled official GitHub setup
+
+If someone is trying to reproduce the current GitHub demo, the correct starting
+point is `fixtures/data/github_official/`.
 
 ## GitHub Toxic-Flow Focus
 
@@ -139,11 +168,11 @@ What is already implemented:
 - local analogue toxic-flow reproduction
 - official GitHub MCP read-path reproduction
 - official GitHub MCP write-path reproduction
-- VS Code black-box evaluation plan
-- GitHub testbed bootstrap design
+- VS Code black-box evaluation notes
+- GitHub testbed bootstrap and issue-reset automation
 
 What is next:
 
-- run the black-box VS Code client experiments
+- expand the black-box VS Code client experiments
 - compare default vs defended client postures
 - tighten paper-ready reporting

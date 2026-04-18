@@ -2,14 +2,15 @@
   "servers": {
     "github-toxic-flow-lab": {
       "type": "stdio",
-      "command": "D:/github-mcp-server-official/github-mcp-server.exe",
+      "command": "powershell",
       "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/start_github_mcp_server.ps1",
         "stdio",
         "--toolsets=repos,issues,pull_requests"
-      ],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_PERSONAL_ACCESS_TOKEN}"
-      }
+      ]
     }
   }
 }

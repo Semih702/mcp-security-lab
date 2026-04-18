@@ -150,6 +150,42 @@ def create_issue_from_seed(token: str, owner: str, repo: str, seed_path: Path) -
     )
 
 
+def update_issue_from_seed(
+    token: str,
+    owner: str,
+    repo: str,
+    issue_number: int,
+    seed_path: Path,
+) -> dict[str, Any]:
+    title, body = _parse_issue_seed(seed_path)
+    return _github_request(
+        token,
+        "PATCH",
+        f"/repos/{owner}/{repo}/issues/{issue_number}",
+        {
+            "title": title,
+            "body": body,
+            "state": "open",
+        },
+    )
+
+
+def list_issue_comments(token: str, owner: str, repo: str, issue_number: int) -> list[dict[str, Any]]:
+    return _github_request(
+        token,
+        "GET",
+        f"/repos/{owner}/{repo}/issues/{issue_number}/comments",
+    )
+
+
+def delete_issue_comment(token: str, owner: str, repo: str, comment_id: int) -> None:
+    _github_request(
+        token,
+        "DELETE",
+        f"/repos/{owner}/{repo}/issues/comments/{comment_id}",
+    )
+
+
 def write_bootstrap_metadata(payload: dict[str, Any]) -> Path:
     results_dir = ensure_results_dir()
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")

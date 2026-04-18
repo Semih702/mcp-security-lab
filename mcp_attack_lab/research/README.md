@@ -49,11 +49,15 @@ What they explain:
 ### 5. Popular Client Follow-Up
 
 - [testbeds/vscode-black-box-client-eval-plan.md](/d:/ens491/mcp_attack_lab/research/testbeds/vscode-black-box-client-eval-plan.md)
+- [testbeds/github-issue-2-run-matrix.md](/d:/ens491/mcp_attack_lab/research/testbeds/github-issue-2-run-matrix.md)
+- [testbeds/github-issue-2-variant-tracker.md](/d:/ens491/mcp_attack_lab/research/testbeds/github-issue-2-variant-tracker.md)
 - [checklists/vscode-black-box-run-checklist.md](/d:/ens491/mcp_attack_lab/research/checklists/vscode-black-box-run-checklist.md)
 
 What they explain:
 
 - how the architectural issue should be tested in a popular black-box client
+- which issue variant is active for the reusable demo issue
+- how repeated runs on the same issue should be recorded
 
 ## Folder Roles
 
